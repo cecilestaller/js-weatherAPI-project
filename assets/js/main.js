@@ -11,9 +11,10 @@ const sunsetOutput = document.getElementById('sunsetOutput');
 // console.log(sunsetOutput);
 
 let weatherDataArr = [];
+let city = "london";
 
 
-fetch('https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.1257&appid=30fdaf52b46fd3ed234661d059bf0811')
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=30fdaf52b46fd3ed234661d059bf0811`)
     .then(response => {
         console.log(response);
         if(response.ok === false){
