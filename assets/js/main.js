@@ -50,24 +50,24 @@ const fetchRequest = (apiKey) =>
             weatherIcon.setAttribute('alt', `animated icon: ${weatherDesc}`);
     
             // Werte aus weatherData(Array) in variablen speichern
-        let temperature = `${Math.round((weatherData.main.temp) / 32)}°C`;
-        let cloudDescription = weatherData.weather[0].description;
-        let obtainDate = new Date();
-        let obtainedDateString = obtainDate.toLocaleString();
+            let temperature = `${Math.round(weatherData.main.temp - 273.15)}°C`;
+            let cloudDescription = weatherData.weather[0].description;
+            let obtainDate = new Date();
+            let obtainedDateString = obtainDate.toLocaleString();
 
 
-        // Function für AM or PM (der local Time) bestimmen:
-        // + Local Time dynamisch bestimmen lassen anhand timezone
-        let time = new Date();
-        let currentHour = time.getHours();
-        let localMinutesNum = time.getMinutes();
-        let localMinutes = localMinutesNum.toString().padStart(2, "0");
+            // Function für AM or PM (der local Time) bestimmen:
+            // + Local Time dynamisch bestimmen lassen anhand timezone
+            let time = new Date();
+            let currentHour = time.getHours();
+            let localMinutesNum = time.getMinutes();
+            let localMinutes = localMinutesNum.toString().padStart(2, "0");
         
-        let timeZone = (weatherData.timezone) / 3600; // + errechnet UTC timestamp
-        let localHourNum = currentHour + timeZone - 1;
-        let localHour = localHourNum.toString().padStart(2, "0");
-        let localTime = `${localHour}:${localMinutes}`;
-        let amOrPmOutput = "";
+            let timeZone = (weatherData.timezone) / 3600; // + errechnet UTC timestamp
+            let localHourNum = currentHour + timeZone - 1;
+            let localHour = localHourNum.toString().padStart(2, "0");
+            let localTime = `${localHour}:${localMinutes}`;
+            let amOrPmOutput = "";
         
         const amOrPm = () => {
             if(localHour < '12'){
