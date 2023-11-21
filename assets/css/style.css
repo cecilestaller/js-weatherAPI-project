@@ -42,8 +42,8 @@ body main form img {
   position: absolute;
   width: 22px;
   filter: opacity(0.5);
-  right: 10vw;
-  top: 2vh;
+  right: 50px;
+  top: 1.5vh;
 }
 body main div {
   background-color: rgba(57, 166, 255, 0.5254901961);
@@ -78,6 +78,34 @@ body main section {
 }
 body main section h4, body main section p {
   font-size: 16px;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    margin-top: 32px;
+    padding-bottom: 32px;
+  }
+  body main {
+    border-radius: 16px;
+    height: 100%;
+  }
+  body main form img {
+    position: absolute;
+    width: 22px;
+    filter: opacity(0.5);
+    right: 50px;
+    top: 1.5vh;
+  }
+}
+@media screen and (max-width: 500px) {
+  body main form img {
+    right: 30px;
+  }
+}
+@media screen and (max-width: 799px) {
+  body main form img {
+    right: 45px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
