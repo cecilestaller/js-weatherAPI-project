@@ -15,7 +15,7 @@ body {
 }
 body main {
   background: linear-gradient(120deg, rgb(135, 196, 255) 50%, #1696ff 100%) no-repeat;
-  width: 500px;
+  max-width: 500px;
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -23,11 +23,23 @@ body main {
   gap: 32px;
   margin-inline: auto;
 }
+body main input {
+  display: block;
+  margin-inline: auto;
+  font-size: 18px;
+  height: 48px;
+  border: none;
+  box-shadow: 0px 0px 10px 0px inset rgba(0, 0, 0, 0.469);
+  border-radius: 24px;
+  width: 300px;
+  text-align: center;
+}
 body main div {
   background-color: rgba(57, 166, 255, 0.5254901961);
   border-radius: 16px;
   padding: 20px;
   color: white;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.107);
 }
 body main div img {
   width: 200px;
@@ -48,6 +60,7 @@ body main section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.099);
 }
 
 /*# sourceMappingURL=style.css.map */

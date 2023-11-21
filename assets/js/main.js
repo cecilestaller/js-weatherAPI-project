@@ -8,11 +8,12 @@ const windOutput = document.getElementById('windOutput');
 const humidityOutput = document.getElementById('humidityOutput');
 const sunriseOutput = document.getElementById('sunriseOutput');
 const sunsetOutput = document.getElementById('sunsetOutput');
-// console.log(sunsetOutput);
+
+const locationOutput = document.getElementById('locationOutput');
+const weatherIcon = document.getElementById('weatherIcon');
 
 let weatherDataArr = [];
-let city = "london";
-
+let city = "Amsterdam";
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=30fdaf52b46fd3ed234661d059bf0811`)
     .then(response => {
@@ -24,6 +25,18 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=30fdaf52b
     })
     .then(weatherData => {
         console.log(weatherData);
+        console.log(weatherData.weather[0].icon);
+
+        // ort als headline ausgeben
+        let cityName = weatherData.name;
+        let country = weatherData.sys.country;
+        locationOutput.textContent = `Weather in ${cityName}, ${country}`;
+        
+        // wetter icons dynamisch anzeigen
+        let iconName = weatherData.weather[0].icon;
+        let weatherDesc = weatherData.weather[0].description;
+        weatherIcon.setAttribute('src', `./assets/img/${iconName}.svg`);
+        weatherIcon.setAttribute('alt', `animated icon: ${weatherDesc}`);
 
         // Werte aus weatherData(Array) in variablen speichern
         let temperature = `${Math.round((weatherData.main.temp) / 32)}°C`;
