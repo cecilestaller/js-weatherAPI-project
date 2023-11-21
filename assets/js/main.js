@@ -53,6 +53,8 @@ const fetchRequest = (apiKey) =>
             let temperature = `${Math.round(weatherData.main.temp - 273.15)}°C`;
             let cloudDescription = weatherData.weather[0].description;
             let obtainDate = new Date();
+            console.log(obtainDate.getTimezoneOffset() / 60);
+            let userTimeDiff = obtainDate.getTimezoneOffset() / 60;
             let obtainedDateString = obtainDate.toLocaleString();
 
 
@@ -64,7 +66,7 @@ const fetchRequest = (apiKey) =>
             let localMinutes = localMinutesNum.toString().padStart(2, "0");
         
             let timeZone = (weatherData.timezone) / 3600; // + errechnet UTC timestamp
-            let localHourNum = currentHour + timeZone - 1;
+            let localHourNum = currentHour + timeZone + userTimeDiff;
             let localHour = localHourNum.toString().padStart(2, "0");
             let localTime = `${localHour}:${localMinutes}`;
             let amOrPmOutput = "";
@@ -83,14 +85,15 @@ const fetchRequest = (apiKey) =>
 
         // Bearbeitung der sunrise / sunset daten
         let sunriseCurrentTime = new Date((weatherData.sys.sunrise) * 1000);
-        let sunriseLocalHourNum = (sunriseCurrentTime.getHours()) -1;
+        console.log(sunriseCurrentTime);
+        let sunriseLocalHourNum = (sunriseCurrentTime.getHours()) + userTimeDiff + timeZone;
         let sunriseLocalHour = sunriseLocalHourNum.toString().padStart(2, "0");
         let sunriseLocalMinuteNum = sunriseCurrentTime.getMinutes();
         let sunriseLocalMinute = sunriseLocalMinuteNum.toString().padStart(2, "0");
         let sunriseTime = `${sunriseLocalHour}:${sunriseLocalMinute} AM`;
 
         let sunsetCurrentTime = new Date((weatherData.sys.sunset) * 1000);
-        let sunsetLocalHourNum = (sunsetCurrentTime.getHours() -1);
+        let sunsetLocalHourNum = Math.abs(sunsetCurrentTime.getHours() + userTimeDiff + timeZone);
         let sunsetLocalHour = sunsetLocalHourNum.toString().padStart(2, "0");
         let sunsetLocalMinuteNum = sunsetCurrentTime.getMinutes();
         let sunsetLocalMinute = sunsetLocalMinuteNum.toString().padStart(2, "0");
