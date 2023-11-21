@@ -15,9 +15,6 @@ img
     max-width: 100%;
 }
 
-
-    
-    
     body
     {
         margin-top: 5vh;
@@ -26,7 +23,7 @@ img
         main
         {
             background: linear-gradient(120deg, rgba(135, 196, 255, 1) 50%, #1696ff 100%) no-repeat;
-            width: 500px;
+            max-width: 500px;
             border-radius: 16px;
             padding: 24px;
             display: flex;
@@ -34,12 +31,26 @@ img
             gap: 32px;
             margin-inline: auto;
 
+            input
+            {
+                display: block;
+                margin-inline: auto;
+                font-size: 18px;
+                height: 48px;
+                border: none;
+                box-shadow: 0px 0px 10px 0px inset rgba(0, 0, 0, 0.469);
+                border-radius: 24px;
+                width: 300px;
+                text-align: center;
+            }
+
             div 
             {
                 background-color: #39a6ff86;
                 border-radius: 16px;
                 padding: 20px;
                 color: white;
+                box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.107);
 
                 img
                 {
@@ -68,7 +79,7 @@ img
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 18px;
-            
+                box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.099);
             }
         }
     }
