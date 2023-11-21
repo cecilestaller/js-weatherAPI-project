@@ -50,28 +50,64 @@ const fetchRequest = (apiKey) =>
             weatherIcon.setAttribute('alt', `animated icon: ${weatherDesc}`);
     
             // Werte aus weatherData(Array) in variablen speichern
-            let temperature = `${Math.round((weatherData.main.temp) / 32)}°C`;
-            let cloudDescription = weatherData.weather[0].description;
-            let currentTime = new Date();
-            let currentLocalTime = currentTime.toLocaleString();
-            let time = new Date();
-            let londonLocaleTime = time.toLocaleTimeString('en-GB', { timeZone: 'Europe/London' });
-            let wind = `speed: ${weatherData.wind.speed} m/s`;
-            let humidity = `${weatherData.main.humidity} %`;
-            let sunriseTime = `${new Date((weatherData.sys.sunrise) * 1000).toLocaleTimeString('en-GB', { timeZone: 'Europe/London' })} AM`;
-            let sunsetTime = `${new Date((weatherData.sys.sunset) * 1000).toLocaleTimeString('en-GB', { timeZone: 'Europe/London' })} PM`;
-    
-            // Text content definieren
-            tempOutput.textContent = temperature;
-            cloudOutput.textContent = cloudDescription;
-            obtainedTimeOutput.textContent = `Obtained at ${currentLocalTime}`;
-            localTimeOutput.textContent = londonLocaleTime;
-            windOutput.textContent = wind;
-            humidityOutput.textContent = humidity;
-            sunriseOutput.textContent = sunriseTime;
-            sunsetOutput.textContent = sunsetTime;
-        })
-        .catch(error => console.log(error));
+        let temperature = `${Math.round((weatherData.main.temp) / 32)}°C`;
+        let cloudDescription = weatherData.weather[0].description;
+        let obtainDate = new Date();
+        let obtainedDateString = obtainDate.toLocaleString();
+
+
+        // Function für AM or PM (der local Time) bestimmen:
+        // + Local Time dynamisch bestimmen lassen anhand timezone
+        let time = new Date();
+        let currentHour = time.getHours();
+        let localMinutesNum = time.getMinutes();
+        let localMinutes = localMinutesNum.toString().padStart(2, "0");
+        
+        let timeZone = (weatherData.timezone) / 3600; // + errechnet UTC timestamp
+        let localHourNum = currentHour + timeZone - 1;
+        let localHour = localHourNum.toString().padStart(2, "0");
+        let localTime = `${localHour}:${localMinutes}`;
+        let amOrPmOutput = "";
+        
+        const amOrPm = () => {
+            if(localHour < '12'){
+                return amOrPmOutput = "AM";
+            } else {
+                return amOrPmOutput = "PM";
+            }
+        }
+        amOrPm();
+
+        let wind = `speed: ${weatherData.wind.speed} m/s`;
+        let humidity = `${weatherData.main.humidity} %`;
+
+        // Bearbeitung der sunrise / sunset daten
+        let sunriseCurrentTime = new Date((weatherData.sys.sunrise) * 1000);
+        let sunriseLocalHourNum = (sunriseCurrentTime.getHours()) -1;
+        let sunriseLocalHour = sunriseLocalHourNum.toString().padStart(2, "0");
+        let sunriseLocalMinuteNum = sunriseCurrentTime.getMinutes();
+        let sunriseLocalMinute = sunriseLocalMinuteNum.toString().padStart(2, "0");
+        let sunriseTime = `${sunriseLocalHour}:${sunriseLocalMinute} AM`;
+
+        let sunsetCurrentTime = new Date((weatherData.sys.sunset) * 1000);
+        let sunsetLocalHourNum = (sunsetCurrentTime.getHours() -1);
+        let sunsetLocalHour = sunsetLocalHourNum.toString().padStart(2, "0");
+        let sunsetLocalMinuteNum = sunsetCurrentTime.getMinutes();
+        let sunsetLocalMinute = sunsetLocalMinuteNum.toString().padStart(2, "0");
+        let sunsetTime = `${sunsetLocalHour}:${sunsetLocalMinute} PM`;
+
+        // Text content definieren
+        tempOutput.textContent = temperature;
+        cloudOutput.textContent = cloudDescription;
+        obtainedTimeOutput.textContent = `Obtained at ${obtainedDateString}`;
+        localTimeOutput.textContent = `${localTime} ${amOrPmOutput}`;
+        windOutput.textContent = wind;
+        humidityOutput.textContent = humidity;
+        sunriseOutput.textContent = sunriseTime;
+        sunsetOutput.textContent = sunsetTime;
+        
+    })
+    .catch(error => console.log(error));
 }
 
 fetchRequest(apiKey);
