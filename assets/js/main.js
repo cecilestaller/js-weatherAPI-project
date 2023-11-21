@@ -28,16 +28,12 @@ const fetchRequest = (apiKey) =>
 {
     fetch(apiKey)
         .then(response => {
-            console.log(response);
             if(response.ok === false){
                 throw new Error('etwas ist schief gegangen');
             }
             return response.json();
         })
         .then(weatherData => {
-            console.log(weatherData);
-            console.log(weatherData.weather[0].icon);
-    
             // ort als headline ausgeben
             let cityName = weatherData.name;
             let country = weatherData.sys.country;
@@ -53,10 +49,8 @@ const fetchRequest = (apiKey) =>
             let temperature = `${Math.round(weatherData.main.temp - 273.15)}°C`;
             let cloudDescription = weatherData.weather[0].description;
             let obtainDate = new Date();
-            console.log(obtainDate.getTimezoneOffset() / 60);
             let userTimeDiff = obtainDate.getTimezoneOffset() / 60;
             let obtainedDateString = obtainDate.toLocaleString();
-
 
             // Function für AM or PM (der local Time) bestimmen:
             // + Local Time dynamisch bestimmen lassen anhand timezone
@@ -64,7 +58,6 @@ const fetchRequest = (apiKey) =>
             let currentHour = time.getHours();
             let localMinutesNum = time.getMinutes();
             let localMinutes = localMinutesNum.toString().padStart(2, "0");
-        
             let timeZone = (weatherData.timezone) / 3600; // + errechnet UTC timestamp
             let localHourNum = currentHour + timeZone + userTimeDiff;
             let localHour = localHourNum.toString().padStart(2, "0");
@@ -85,13 +78,11 @@ const fetchRequest = (apiKey) =>
 
         // Bearbeitung der sunrise / sunset daten
         let sunriseCurrentTime = new Date((weatherData.sys.sunrise) * 1000);
-        console.log(sunriseCurrentTime);
         let sunriseLocalHourNum = (sunriseCurrentTime.getHours()) + userTimeDiff + timeZone;
         let sunriseLocalHour = sunriseLocalHourNum.toString().padStart(2, "0");
         let sunriseLocalMinuteNum = sunriseCurrentTime.getMinutes();
         let sunriseLocalMinute = sunriseLocalMinuteNum.toString().padStart(2, "0");
         let sunriseTime = `${sunriseLocalHour}:${sunriseLocalMinute} AM`;
-
         let sunsetCurrentTime = new Date((weatherData.sys.sunset) * 1000);
         let sunsetLocalHourNum = Math.abs(sunsetCurrentTime.getHours() + userTimeDiff + timeZone);
         let sunsetLocalHour = sunsetLocalHourNum.toString().padStart(2, "0");
@@ -108,9 +99,7 @@ const fetchRequest = (apiKey) =>
         humidityOutput.textContent = humidity;
         sunriseOutput.textContent = sunriseTime;
         sunsetOutput.textContent = sunsetTime;
-        
     })
     .catch(error => console.log(error));
 }
-
 fetchRequest(apiKey);
