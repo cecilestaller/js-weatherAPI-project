@@ -8,24 +8,28 @@
 </head>
 <body>
     <main>
-        <input type="text" name="" id="locationInput" placeholder="enter your city">
+        <form onsubmit="return false">
+            <input type="text" name="" id="locationInput" placeholder="enter city name">
+            <img onclick="searchLocation()" src="./assets/img/searchIcon2.png" id="searchButton"></img>
+        </form>
+
         <div>
-            <h1 id="locationOutput">Weather in London, GB</h1>
+            <h1 id="locationOutput"></h1>
             <img id="weatherIcon">
             <h2 id="tempOutput"></h2>
             <h4 id="cloudOutput"><h3>
             <h4 id="obtainedTimeOutput"></h4>
         </div>
         <section>
-                <h4>Local time</h4>
+                <h4>🕒 Local time </h4>
                 <p id="localTimeOutput"></p>
-                <h4>Wind</h4>
+                <h4>💨 Wind</h4>
                 <p id="windOutput"></p>
-                <h4>Humidity</h4>
+                <h4>💧 Humidity </h4>
                 <p id="humidityOutput"></p>
-                <h4>Sunrise</h4>
+                <h4>🌄 Sunrise </h4>
                 <p id="sunriseOutput"></p>
-                <h4>Sunset</h4>
+                <h4>🌅 Sunset</h4>
                 <p id="sunsetOutput"></p>
         </section>
     </main>

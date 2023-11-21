@@ -10,20 +10,24 @@ img {
 }
 
 body {
-  margin-top: 5vh;
   font-family: sans-serif;
+  display: flex;
 }
 body main {
   background: linear-gradient(120deg, rgb(135, 196, 255) 50%, #1696ff 100%) no-repeat;
-  max-width: 500px;
-  border-radius: 16px;
-  padding: 24px;
+  flex-basis: 500px;
+  height: 100vh;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 3vh;
   margin-inline: auto;
 }
-body main input {
+body main form {
+  position: relative;
+  display: flex;
+}
+body main form input {
   display: block;
   margin-inline: auto;
   font-size: 18px;
@@ -31,8 +35,15 @@ body main input {
   border: none;
   box-shadow: 0px 0px 10px 0px inset rgba(0, 0, 0, 0.469);
   border-radius: 24px;
-  width: 300px;
+  flex-basis: 400px;
   text-align: center;
+}
+body main form img {
+  position: absolute;
+  width: 22px;
+  filter: opacity(0.5);
+  right: 10vw;
+  top: 2vh;
 }
 body main div {
   background-color: rgba(57, 166, 255, 0.5254901961);
@@ -41,16 +52,19 @@ body main div {
   color: white;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.107);
 }
+body main div h1 {
+  font-size: 24px;
+}
 body main div img {
-  width: 200px;
+  width: 180px;
   margin-inline: auto;
-  margin-top: 24px;
 }
 body main div h2 {
+  color: rgb(255, 241, 132);
   font-size: 32px;
 }
 body main div h2, body main div h4 {
-  margin-bottom: 12px;
+  margin-bottom: 2vh;
 }
 body main section {
   background-color: rgba(200, 233, 251, 0.3647058824);
@@ -58,9 +72,12 @@ body main section {
   padding: 24px;
   border-radius: 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(130px, 1fr) minmax(120px, 1fr);
   gap: 18px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.099);
+}
+body main section h4, body main section p {
+  font-size: 16px;
 }
 
 /*# sourceMappingURL=style.css.map */

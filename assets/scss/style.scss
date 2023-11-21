@@ -17,31 +17,49 @@ img
 
     body
     {
-        margin-top: 5vh;
+        // margin-top: 5vh;
         font-family: sans-serif;
+        display: flex;
+        // flex-direction: column;
 
         main
         {
             background: linear-gradient(120deg, rgba(135, 196, 255, 1) 50%, #1696ff 100%) no-repeat;
-            max-width: 500px;
-            border-radius: 16px;
-            padding: 24px;
+            flex-basis: 500px;
+            height: 100vh;
+            // border-radius: 16px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 3vh;
             margin-inline: auto;
 
-            input
+            form
             {
-                display: block;
-                margin-inline: auto;
-                font-size: 18px;
-                height: 48px;
-                border: none;
-                box-shadow: 0px 0px 10px 0px inset rgba(0, 0, 0, 0.469);
-                border-radius: 24px;
-                width: 300px;
-                text-align: center;
+                position: relative;
+                display: flex;
+
+                input
+                {
+                    display: block;
+                    margin-inline: auto;
+                    font-size: 18px;
+                    height: 48px;
+                    border: none;
+                    box-shadow: 0px 0px 10px 0px inset rgba(0, 0, 0, 0.469);
+                    border-radius: 24px;
+                    flex-basis: 400px;
+                    text-align: center;
+                }
+
+                img
+                {
+                    position: absolute;
+                    width: 22px;
+                    filter: opacity(0.5);
+                    right: 10vw;
+                    top: 2vh;
+                }
             }
 
             div 
@@ -52,21 +70,26 @@ img
                 color: white;
                 box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.107);
 
+                h1
+                {
+                    font-size: 24px;
+                }
+
                 img
                 {
-                    width: 200px;
+                    width: 180px;
                     margin-inline: auto;
-                    margin-top: 24px;
                 }
                 
                 h2
                 {
+                    color: rgb(255, 241, 132);
                     font-size: 32px;
                 }
 
                 h2, h4
                 {
-                    margin-bottom: 12px;
+                    margin-bottom: 2vh;
                 }
             }
 
@@ -77,9 +100,16 @@ img
                 padding: 24px;
                 border-radius: 16px;
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: minmax(130px, 1fr) minmax(120px, 1fr);
                 gap: 18px;
                 box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.099);
+                
+                h4, p
+                {
+                    font-size: 16px;
+                }
             }
         }
     }
+
+
