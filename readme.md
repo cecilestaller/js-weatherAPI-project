@@ -1,4 +1,4 @@
-# the weather app
+# the weather app ☀️ 🌧️
 
 - This project was created as part of a coding bootcamp.
 - we worked in a group of two
@@ -17,7 +17,7 @@
 
 https://cecilestaller.github.io/js-weatherAPI-project/
 
-## weather app Screenshots
+## weather app Screenshots 📸
 
 ![default](./assets/img/default_sc.png)
 
@@ -39,7 +39,11 @@ https://cecilestaller.github.io/js-weatherAPI-project/
 
 ![trello progress](./assets/img/weatherApp_project_in_progress.png)
 
-## Tech Stack
+## Copatible Screensizes
+
+- you can use the weather app on all screensizes
+
+## Tech Stack 💻
 
 - HTML5
 - SCSS
