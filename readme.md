@@ -1,7 +1,5 @@
 # the weather app
 
-## an API and GIT Group-Project
-
 - This project was created as part of a coding bootcamp.
 - we worked in a group of two
 - The learning objective of the project was to work with GIT (git workflow) as a team, to internalize the use of APIs and API Keys and to strengthen our skills in project planning and project documentation. We presented our results to our course.
@@ -15,7 +13,7 @@
 - animated icons from "amCharts" and "basmilius" implemented in the code also dynamically adapt to the weather at the location specified by the user. This gives the user an even better overview of the current weather
 - In addition to the current temperature, the weather app provides the user with information about the cloud situation, wind speed, humidity, local time and the local sunrise and sunset time at the location specified by the user.
 
-## Demo
+## Demo Link
 
 https://cecilestaller.github.io/js-weatherAPI-project/
 
@@ -26,6 +24,20 @@ https://cecilestaller.github.io/js-weatherAPI-project/
 ![weather mexicoCity](./assets/img/mexico_city_sc.png)
 
 ![weather LA](./assets/img/LA_sc.png)
+
+## project planning & documentation Screenshots
+
+### PAP Flowchart
+
+![pap flowchart](./assets/img/weatherApp_flowChart.png)
+
+### SCRUM (Trello-Board) at project start
+
+![trello start](./assets/img/weatherApp_project_starting.png)
+
+### SCRUM (Trello-Board) while project in progress
+
+![trello progress](./assets/img/weatherApp_project_in_progress.png)
 
 ## Tech Stack
 
@@ -43,3 +55,17 @@ https://cecilestaller.github.io/js-weatherAPI-project/
 
 - [@YacineYldrm](https://github.com/YacineYldrm)
 - [@cecilestaller](https://github.com/cecilestaller)
+
+## used Links
+
+### OpenWeatherAPI
+
+https://openweathermap.org/current#geocoding
+
+https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
+### Icons
+
+https://www.amcharts.com/free-animated-svg-weather-icons/
+
+https://github.com/basmilius/weather-icons
